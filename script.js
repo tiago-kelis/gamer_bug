@@ -2,6 +2,8 @@
 
 let altura = 0;
 let largura = 0;
+let vidas = 1;
+let tempo = 15;
 
 function ajusteTela () {
    
@@ -14,12 +16,34 @@ function ajusteTela () {
 
 ajusteTela();
 
+let cronometro = setInterval( function() {
+
+    tempo -= 1;
+    if(tempo < 0){
+        clearInterval(cronometro);
+        clearInterval(criarMosca);
+       window.location.href="index-vitoria.html";
+
+    }else {
+    document.getElementById("cronometro").innerHTML = tempo;
+    }   
+    
+}, 1000);
+
 
 
 function positonRondom () {
 
     if(document.getElementById("mosca")) {
         document.getElementById("mosca").remove();
+
+        if (vidas > 3) {
+           window.location.href = "fim_de_Jogo.html";
+
+        }else{
+        document.getElementById("v" + vidas).src="imge/coracao_vazio.png"
+        vidas++;
+        }
     }
 
     let positionX = Math.floor(Math.random() * largura) - 90;
@@ -39,6 +63,9 @@ function positonRondom () {
       mosca.style.top = positionY + "px";
       mosca.style.position = "absolute";
       mosca.id = "mosca";
+      mosca.onclick = function () {
+        this.remove();
+      }
 
      
 

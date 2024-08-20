@@ -11,23 +11,24 @@
 
     <div class="painel">
         <div class="life">
-            <img src="./imge/coracao_vazio.png" alt="">
-            <img src="./imge/coracao_cheio.png" alt="">
-            <img src="./imge/coracao_cheio.png" alt="">
+            <img id="v1" src="./imge/coracao_cheio.png" alt="">
+            <img id="v2" src="./imge/coracao_cheio.png" alt="">
+            <img id="v3" src="./imge/coracao_cheio.png" alt="">
 
 
         </div>
 
-        <div class="cronometro">Tempo restante: ?</div>
+        <div class="cronometro">Tempo restante: <span id="cronometro"></span></div>
 
 
     </div>
 
    <script>
-   
-    setInterval(function () {
+
+    document.getElementById("cronometro").innerHTML = tempo;    
+     let criarMosca = setInterval(function () {
         positonRondom();
-    }, 1000)
+    }, 2000)
 
    </script>
 </body>
