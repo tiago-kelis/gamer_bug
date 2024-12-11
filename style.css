@@ -8,14 +8,11 @@ html {
 }
 
 body {
-    height: 400px;
-    
-  
-   background-image: url("./imge/back4.jpg");
-   background-repeat: repeat-x;
-   
+    height: 100vh;
+    background-image: url("./imge/back4.jpg");
+    background-repeat: repeat-x;
+    background-size: cover;
 }
-  
 
 .mosca {
     width: 50px;
@@ -48,15 +45,43 @@ body {
     border-top: 1px solid #fff;
     background: #fff;
     opacity: 0.7;
+    display: flex;
+    justify-content: space-between;
 }
 
 .life {
-    float: left;
+    flex: 1;
 }
 
 .cronometro {
-    float: left;
+    flex: 1;
     font-size: 20px;
     font-weight: bold;
+    text-align: right;
+}
 
+/* Media Queries */
+@media (max-width: 600px) {
+    .mosca, .mosca2, .mosca3 {
+        width: 30px;
+        height: 30px;
+    }
+    .painel {
+        flex-direction: column;
+        align-items: center;
+    }
+    .cronometro {
+        text-align: center;
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+    .mosca, .mosca2, .mosca3 {
+        width: 40px;
+        height: 40px;
+    }
+    .cronometro {
+        font-size: 18px;
+    }
 }
