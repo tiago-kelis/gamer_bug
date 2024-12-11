@@ -38,8 +38,8 @@ let cronometro = setInterval(function() {
 function positonRondom() {
     if(document.getElementById("mosca")) {
         document.getElementById("mosca").remove();
-        if (vidas > 3) {
-            window.location.href ="index.html"; // Verifique a capitalização
+        if(vidas > 3) {
+            window.location.href ="fim_de_jogo.html"; // Verifique a capitalização
         } else {
             document.getElementById("v" + vidas).src = "imge/coracao_vazio.png";
             vidas++;
