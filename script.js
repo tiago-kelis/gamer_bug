@@ -1,5 +1,3 @@
-
-
 let altura = 0;
 let largura = 0;
 let vidas = 1;
@@ -11,58 +9,40 @@ nivel = nivel.replace("?", "");
 let criarMoscaTempo = 1500;
 
 if(nivel === "normal") {
-
     criarMoscaTempo = 1500;
-
-}else if(nivel === "dificil"){
-   
+} else if(nivel === "dificil") {
     criarMoscaTempo = 1000;
-
-}else if(nivel === "bradock") {
-   
+} else if(nivel === "bradock") {
     criarMoscaTempo = 550;
 }
 
-
-
-function ajusteTela () {
-   
-    largura = window.innerWidth;  
-    altura = window.innerHeight; 
-
+function ajusteTela() {
+    largura = window.innerWidth;
+    altura = window.innerHeight;
     console.log(largura, altura);
-
 }
 
 ajusteTela();
 
-let cronometro = setInterval( function() {
-
+let cronometro = setInterval(function() {
     tempo -= 1;
-    if(tempo < 0){
+    if(tempo < 0) {
         clearInterval(cronometro);
         clearInterval(criarMosca);
-       window.location.href="index-vitoria.html";
-
-    }else {
-    document.getElementById("cronometro").innerHTML = tempo;
-    }   
-    
+        window.location.href ="vitoria.html";
+    } else {
+        document.getElementById("cronometro").innerHTML = tempo;
+    }
 }, 1000);
 
-
-
-function positonRondom () {
-
+function positonRondom() {
     if(document.getElementById("mosca")) {
         document.getElementById("mosca").remove();
-
         if (vidas > 3) {
-           window.location.href = "fim_de_Jogo.html";
-
-        }else{
-        document.getElementById("v" + vidas).src="imge/coracao_vazio.png"
-        vidas++;
+            window.location.href ="index.html"; // Verifique a capitalização
+        } else {
+            document.getElementById("v" + vidas).src = "imge/coracao_vazio.png";
+            vidas++;
         }
     }
 
@@ -74,56 +54,38 @@ function positonRondom () {
     
     console.log(positionX, positionY);
 
-
-     let mosca = document.createElement("img");
-
-      mosca.src = "imge/mosca.png";
-      mosca.className = tamanhoAleatorio() + " " + ladoAleatorio();
-      mosca.style.left = positionX + "px";
-      mosca.style.top = positionY + "px";
-      mosca.style.position = "absolute";
-      mosca.id = "mosca";
-      mosca.onclick = function () {
+    let mosca = document.createElement("img");
+    mosca.src = "imge/mosca.png";
+    mosca.className = tamanhoAleatorio() + " " + ladoAleatorio();
+    mosca.style.left = positionX + "px";
+    mosca.style.top = positionY + "px";
+    mosca.style.position = "absolute";
+    mosca.id = "mosca";
+    mosca.onclick = function() {
         this.remove();
-      }
+    };
 
-     
-
-     document.body.appendChild(mosca);
-
-   
-
+    document.body.appendChild(mosca);
 }
 
-function tamanhoAleatorio () {
-
+function tamanhoAleatorio() {
     let tamanho = Math.floor(Math.random() * 3);
-
     switch(tamanho) {
         case 0:
-            return "mosca"
-
+            return "mosca";
         case 1:
-            return "mosca2"
-
+            return "mosca2";
         case 2:
-            return "mosca3" 
-    
-            
+            return "mosca3";
     }
 }
 
-function ladoAleatorio () {
-
+function ladoAleatorio() {
     let lado = Math.floor(Math.random() * 2);
-
     switch(lado) {
         case 0:
-            return "ladoA"
-
+            return "ladoA";
         case 1:
-            return "ladoB"     
-            
+            return "ladoB";
     }
-
 }
